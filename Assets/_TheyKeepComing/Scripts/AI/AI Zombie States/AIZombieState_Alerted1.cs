@@ -8,6 +8,7 @@ public class AIZombieState_Alerted1 : AIZombieState
     [SerializeField] float _waypointAngleThreshold = 90.0f;
     [SerializeField] float _threatAngleThreshold = 10.0f;
     [SerializeField] float _directionChangeTime = 1.5f;
+    [SerializeField] float _slerpSpeed = 45.0f;
 
     // Private Fields
     float _timer = 0.0f;
@@ -117,7 +118,8 @@ public class AIZombieState_Alerted1 : AIZombieState
                 _directionChangeTimer = 0.0f;
             }
         }
-        else if (_zombieStateMachine.targetType == AITargetType.Waypoint && !_zombieStateMachine.navAgent.pathPending)
+        else
+        if (_zombieStateMachine.targetType == AITargetType.Waypoint && !_zombieStateMachine.navAgent.pathPending)
         {
             angle = AIState.FindSignedAngle(_zombieStateMachine.transform.forward,
                 _zombieStateMachine.navAgent.steeringTarget - _zombieStateMachine.transform.position);
@@ -140,6 +142,9 @@ public class AIZombieState_Alerted1 : AIZombieState
         }
 
 
+        if (!_zombieStateMachine.useRootRotation) _zombieStateMachine.transform.Rotate(new Vector3(0.0f, _slerpSpeed * _zombieStateMachine.seeking * Time.deltaTime, 0.0f));
+
         return AIStateType.Alerted;
     }
+
 }

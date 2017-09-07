@@ -8,6 +8,8 @@ public class CharacterManager : MonoBehaviour
     [SerializeField] private CameraBloodEffect _cameraBloodEffect = null;
     [SerializeField] private Camera _camera = null;
     [SerializeField] private float _health = 100.0f;
+    [SerializeField] private float weaponHitStrength = 5.0f;
+    [SerializeField] private int weaponDamage = 25;
 
     // Private
     private Collider _collider = null;
@@ -67,7 +69,7 @@ public class CharacterManager : MonoBehaviour
             AIStateMachine stateMachine = _gameSceneManager.GetAIStateMachine(hit.rigidbody.GetInstanceID());
             if (stateMachine)
             {
-                stateMachine.TakeDamage(hit.point, ray.direction * 1.0f, 25, hit.rigidbody, this, 0);
+                stateMachine.TakeDamage(hit.point, ray.direction * weaponHitStrength, weaponDamage, hit.rigidbody, this, 0);
             }
         }
 

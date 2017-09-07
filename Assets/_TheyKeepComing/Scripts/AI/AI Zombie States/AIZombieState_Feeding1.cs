@@ -11,6 +11,7 @@ public class AIZombieState_Feeding1 : AIZombieState
 
     // Private Fields
     private int _eatingStateHash = Animator.StringToHash("Feeding State");
+    private int _crawlEatingStateHash = Animator.StringToHash("Crawl Feeding State");
     private int _eatingLayerIndex = -1;
     private float _timer = 0.0f;
     // Mandatory Overrides
@@ -75,7 +76,8 @@ public class AIZombieState_Feeding1 : AIZombieState
         }
 
         // Is the feeding animation playing now
-        if (_zombieStateMachine.animator.GetCurrentAnimatorStateInfo(_eatingLayerIndex).shortNameHash == _eatingStateHash)
+        int currentHash = _zombieStateMachine.animator.GetCurrentAnimatorStateInfo(_eatingLayerIndex).shortNameHash;
+        if (currentHash == _eatingStateHash || currentHash == _crawlEatingStateHash)
         {
             _zombieStateMachine.satisfaction = Mathf.Min(_zombieStateMachine.satisfaction + ((Time.deltaTime * _zombieStateMachine.replenishRate) / 100.0f), 1.0f);
             if (GameSceneManager.instance && GameSceneManager.instance.bloodParticles && _bloodParticlesMount)
@@ -102,6 +104,11 @@ public class AIZombieState_Feeding1 : AIZombieState
             Quaternion newRot = Quaternion.LookRotation(targetPos - _zombieStateMachine.transform.position);
             _zombieStateMachine.transform.rotation = Quaternion.Slerp(_zombieStateMachine.transform.rotation, newRot, Time.deltaTime * _slerpSpeed);
         }
+
+        Vector3 headToTarget = _zombieStateMachine.targetPosition - _zombieStateMachine.animator.GetBoneTransform(HumanBodyBones.Head).position;
+        _zombieStateMachine.transform.position = Vector3.Lerp(_zombieStateMachine.transform.position,
+                                                                 _zombieStateMachine.transform.position + headToTarget,
+                                                                 Time.deltaTime);
 
         // Stay in Feeding state
         return AIStateType.Feeding;

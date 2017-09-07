@@ -32,6 +32,7 @@ public abstract class AIState : MonoBehaviour
     // ------------------------------------------------------------------
     public virtual void OnAnimatorUpdated()
     {
+
         // Get the number of meters the root motion has updated for this update and
         // divide by deltaTime to get meters per second. We then assign this to
         // the nav agent's velocity.
