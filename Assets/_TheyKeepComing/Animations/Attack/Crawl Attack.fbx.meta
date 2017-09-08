@@ -173,9 +173,9 @@ ModelImporter:
     400164: upperJaw
     4300000: Genesis2Male.Shape
     7400000: All Anims
-    7400002: Biting
-    7400004: Left Swipe
-    7400006: Right Swipe
+    7400002: Crawl Biting
+    7400004: Crawl Left Swipe
+    7400006: Crawl Right Swipe
     7400008: Crawl Feeding Intro
     9500000: //RootNode
     13700000: Genesis2Male.Shape
@@ -240,7 +240,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Biting
+      name: Crawl Biting
       takeName: Animation
       firstFrame: 20
       lastFrame: 58
@@ -311,7 +311,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Left Swipe
+      name: Crawl Left Swipe
       takeName: Animation
       firstFrame: 63
       lastFrame: 96
@@ -382,7 +382,7 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Right Swipe
+      name: Crawl Right Swipe
       takeName: Animation
       firstFrame: 63
       lastFrame: 96

@@ -233,7 +233,7 @@ ModelImporter:
     400222: TongueBack
     400224: TongueMid
     400226: TongueTip
-    7400000: zombie_idle_1
+    7400000: Zombie Idle Standart
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -263,7 +263,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: zombie_idle_1
+      name: Zombie Idle Standart
       takeName: mixamo.com
       firstFrame: 0
       lastFrame: 120
